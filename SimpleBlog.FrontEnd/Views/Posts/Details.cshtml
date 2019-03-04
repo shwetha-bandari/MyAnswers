@@ -1,0 +1,78 @@
+@model SimpleBlog.FrontEnd.ViewModels.PostDetailsViewModel
+@{
+    ViewData["Title"] = $"{Model.Post.Title} - Simple Blog";
+}
+@if (Model.Post != null)
+{
+    <h1>@Model.Post.Title</h1>
+
+    <div class="row mb-1">
+        <div class="col-md-12">
+            <h2><img src="https://via.placeholder.com/1920x600/@Model.Post.Colour/ffffff?text=@Model.Post.Title" alt="@Model.Post.Title" class="img-responsive" /></h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            @Model.Post.Body
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            @Model.Post.Body
+        </div>
+    </div>
+    <p>
+        <div>
+            @if (Model.Comments != null && Model.Comments.Count() > 0)
+            {
+                Model.Comments.Count();
+            }
+        </div>
+    </p>
+    <style>
+        ul.breadcrumb {
+            padding: 10px 16px;
+            list-style: none;
+            background-color: #eee;
+        }
+                ul.breadcrumb li {
+                display: inline;
+                font-size: 18px;
+            }
+                ul.breadcrumb li + li:before {
+                    padding: 8px;
+                    color: black;
+                    content: "/\00a0";
+                }
+                ul.breadcrumb li a {
+                    color: #0275d8;
+                    text-decoration: none;
+                }
+    </style>
+    <body>
+        <ul class="breadcrumb">
+            <li><a href="#">Post</a></li>
+            <li><a href="#">Details</a></li>
+            <li><a href="#">@Model.Post.Id.</a></li>
+        </ul>
+    </body>
+    <h2>What people say</h2>
+    foreach (var comment in Model.Comments)
+    {
+        <div class="row">
+            <div class="col-md-1">
+                <img src="@comment.Avatar" alt="@comment.Name" class="img-responsive" />
+            </div>
+            <div class="col-md-5">
+                <h3>@comment.Name</h3>
+                <p>@comment.Body</p>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <p>Post not found. Sorry.</p>
+}

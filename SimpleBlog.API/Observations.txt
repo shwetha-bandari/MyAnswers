@@ -1,0 +1,13 @@
+﻿I observed the below points:
+
+API Side :
+1. Need to use re-usable code.so we can improve the performance.
+2. Permissions are must for the better security (like user management).
+3. Json data should be always secured.
+4. Need to use style cop for comments.
+
+Front End Side:
+1. Need to use stylesheet for the bettet UI
+2. The response error payloads having the correct error messages but some response we can handle through AJAX calls
+3. Routing session need to be taken for optional parameters.
+4. Allignment changes are required.
